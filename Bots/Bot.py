@@ -28,6 +28,10 @@ class Bot(ABC):
             print(self.__comandos[cmd][1])
         else:
             print('Comando Inválido!') #mudardepois
+    
+    @abstractmethod
+    def apresentacao(self):
+        pass
 
     @abstractmethod
     def boas_vindas(self):
