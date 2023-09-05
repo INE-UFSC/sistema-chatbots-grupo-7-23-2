@@ -1,7 +1,7 @@
 from Bots.Bot import Bot
 
 class BotZangado(Bot):
-    def __init__(self,nome):
+    def __init__(self, nome):
         self.__nome = nome
 
     #nao esquecer o decorator
@@ -9,7 +9,7 @@ class BotZangado(Bot):
         pass
 
     #nao esquecer o decorator
-    def nome(nome):
+    def nome(self, nome):
         pass
 
     def apresentacao(self):
@@ -18,7 +18,7 @@ class BotZangado(Bot):
     def mostra_comandos(self):
         pass
     
-    def executa_comando(self,cmd):
+    def executa_comando(self, cmd):
         pass
 
     def boas_vindas(self):
