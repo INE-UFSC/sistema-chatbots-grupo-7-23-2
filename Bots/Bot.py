@@ -25,7 +25,7 @@ class Bot(ABC):
     @abstractmethod
     def executa_comando(self,cmd):
         if cmd<=len(self.__comandos) and cmd>=1:
-            print(self.__comandos[cmd][1])
+            print(f' E eu te respondo: {self.__comandos[cmd][1]}')
         else:
             print('Comando Inválido!') #mudardepois
     
