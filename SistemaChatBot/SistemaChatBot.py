@@ -14,12 +14,12 @@ class SistemaChatBot:
         self.__over=False
     
     def boas_vindas(self):
-        print(f'Bem vindo ao Sistema de Chatbots da {self.empresa}!')
+        print(f'Bem vindo ao Sistema de Chatbots da {self.__empresa}!')
 
     def mostra_menu(self):
         print('Nossos bots disponíveis no momento são:')
         for x in range(len (self.__lista_bots)):
-            print(f'{x+1}- Bot: {self.__lista_bots[x].nome}. Mensagem de apresentação: {self.__lista_bots[x].nome.apresentacao()}.')
+            print(f'{x}- Bot: {self.__lista_bots[x].nome}. Mensagem de apresentação: {self.__lista_bots[x].apresentacao()}.')
     
     def escolhe_bot(self):
         indice_bot=int(input('Digite o número do bot com que você quer conversar:'))
@@ -34,18 +34,18 @@ class SistemaChatBot:
             self.__over=True
             return
         else:
-            print(f'Você disse: {self.__bot.__comandos[indice_comando][0]}')
+            print(f'Você disse: {self.__bot.get_comando(indice_comando)[0]}')
             self.__bot.executa_comando(indice_comando)
 
     def inicio(self):
         pass
         self.boas_vindas()
-        self.mostra_menu
+        self.mostra_menu()
         self.escolhe_bot()
         self.__bot.boas_vindas()
         while not self.__over:
             self.mostra_comandos_bot()
-            self.le_envia_comando
-        self.__bot.despedida()
+            self.le_envia_comando()
+        print(self.__bot.despedida())
         ##entra no loop de mostrar comandos do bot e escolher comando do bot até o usuário definir a saída
         ##ao sair mostrar a mensagem de despedida do bot

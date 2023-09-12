@@ -1,10 +1,10 @@
 from Bots.Bot import Bot
 
-class BotZangado(Bot):
+class BotSadBoy(Bot):
     def __init__(self, nome):
         comandos=[
             ('Olá!','Estou triste ;-;.'),
-            ('Me conte sobre você', f'Eu sou o {self.nome} vivo sad e triste.'),
+            ('Me conte sobre você', f'Eu sou o {nome} vivo sad e triste.'),
             ('Como você está?', 'Estou triste hoje, pois não estou feliz.'),
             ('Você quer ser meu amigo?', 'Se a tristeza permitir, podemos sim ser amigos.')
         ]

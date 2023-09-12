@@ -4,7 +4,7 @@ class BotZangado(Bot):
     def __init__(self, nome):
         comandos=[
             ('Olá!','Não fale comigo, idiota!'),
-            ('Me conte sobre você',f'Eu sou {self.nome}, e eu odeio conversar com você!'),
+            ('Me conte sobre você',f'Eu sou {nome}, e eu odeio conversar com você!'),
             ('Como você está?','Com você por aqui? Horrível!'),
             ('Você quer ser meu amigo?','Isso é uma pergunta séria? Suma da minha frente!')
         ]

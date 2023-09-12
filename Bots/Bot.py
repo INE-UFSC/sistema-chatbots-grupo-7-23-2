@@ -19,10 +19,12 @@ class Bot(ABC):
 
     def mostra_comandos(self):
         for i in range(len(self.__comandos)):
-            print(f'{i+1}-{self.__comandos[i][0]}')
+            print(f'{i}-{self.__comandos[i][0]}')
+    
+    def get_comando(self,indice):
+        return self.__comandos[indice]
         
 
-    @abstractmethod
     def executa_comando(self,cmd):
         if cmd<=len(self.__comandos) and cmd>=1:
             print(f' E eu te respondo: {self.__comandos[cmd][1]}')
