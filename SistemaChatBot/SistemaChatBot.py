@@ -21,21 +21,24 @@ class SistemaChatBot:
             print(f'{x}- Bot: {self.__lista_bots[x].nome}. Mensagem de apresentação: {self.__lista_bots[x].apresentacao()}.')
     
     def escolhe_bot(self):
-        indice_bot = int(input('Digite o número do bot com que você quer conversar:'))
+        indice_bot = int(input('Digite o número do bot com que você quer conversar: '))
         self.__bot = self.__lista_bots[indice_bot]
 
     def mostra_comandos_bot(self):
         self.__bot.mostra_comandos()
 
     def le_envia_comando(self):
-        indice_comando = int(input('Digite o comando desejado (ou -1 para sair):'))
+        indice_comando = int(input('Digite o comando desejado (ou -1 para sair): '))
         if indice_comando == -1:
             self.__over=True
             return
 
-        else:
+        try:
             print(f'Você disse: {self.__bot.get_comando(indice_comando)[0]}')
             self.__bot.executa_comando(indice_comando)
+        
+        except IndexError as e:
+            print('\n' + str(e) + '\n')
 
     def inicio(self):
         self.boas_vindas()
