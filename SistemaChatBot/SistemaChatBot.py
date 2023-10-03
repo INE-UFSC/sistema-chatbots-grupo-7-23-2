@@ -29,16 +29,16 @@ class SistemaChatBot:
 
     def le_envia_comando(self):
         indice_comando = int(input('Digite o comando desejado (ou -1 para sair): '))
+        try :
+            comando = self.__bot.get_comando(indice_comando)
+        except IndexError as e:
+            print('\n' + str(e) + '\n')
         if indice_comando == -1:
             self.__over=True
             return
 
-        try:
-            print(f'Você disse: {self.__bot.get_comando(indice_comando)[0]}')
-            self.__bot.executa_comando(indice_comando)
-        
-        except IndexError as e:
-            print('\n' + str(e) + '\n')
+        print(f'Você disse: {comando.mensagem}')
+        print(f'Eu te respondo: {comando.getRandomResposta()}')
 
     def inicio(self):
         self.boas_vindas()
