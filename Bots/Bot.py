@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
+from comando import Comando
 
 class Bot(ABC):
-    def __init__(self, nome: str, comandos:list[tuple[str]]):
+    def __init__(self, nome: str, comandos: list(Comando)):
         self.__nome = nome
         self.__comandos = comandos
 
@@ -14,22 +15,15 @@ class Bot(ABC):
         self.__nome = nome
 
     def mostra_comandos(self) -> None:
-        for i in range(len(self.__comandos)):
-            print(f'{i}-{self.__comandos[i][0]}')
+        for comando in self.__comandos:
+            print(f'{comando.id} - {comando.mensagem}')
     
-    def get_comando(self, indice: int) -> tuple[str]:
-        if indice >= 0 and indice < len(self.__comandos):
-            return self.__comandos[indice]
+    def get_comando(self, id: int):
+        for comando in self.__comandos:
+            if comando.id == id:
+                return comando
+        raise IndexError('Comando Inválido!')
 
-        raise IndexError('Comando inválido')
-
-    def executa_comando(self,cmd):
-        if cmd >= 0 and cmd <= len(self.__comandos):
-            print(f'E eu te respondo: {self.__comandos[cmd][1]}')
-            return
-
-        raise IndexError('Comando inválido')
-    
     @abstractmethod
     def apresentacao(self) -> None:
         pass
