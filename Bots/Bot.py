@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from comando import Comando
 
 class Bot(ABC):
-    def __init__(self, nome: str, comandos: list(Comando)):
+    def __init__(self, nome: str, comandos: list[Comando]):
         self.__nome = nome
         self.__comandos = comandos
 

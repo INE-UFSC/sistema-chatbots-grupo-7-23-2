@@ -1,7 +1,10 @@
 from Bots.Bot import Bot
+import PySimpleGUI as sg
+from assets.interface import Interface
+
 
 class SistemaChatBot:
-    def __init__(self, nomeEmpresa: str, lista_bots: list[Bot]):
+    def __init__(self, nomeEmpresa: str, lista_bots: list[Bot], janela: Interface):
         self.__empresa = nomeEmpresa
         ##verificar se a lista de bots contém apenas bots
         for bot in lista_bots:
@@ -11,18 +14,20 @@ class SistemaChatBot:
         self.__lista_bots = lista_bots
         self.__bot: Bot
         self.__over = False
+        self.janela = janela
     
     def boas_vindas(self) -> None:
-        print(f'Bem vindo ao Sistema de Chatbots da {self.__empresa}!')
+        return f'Bem vindo ao Sistema de Chatbots da {self.__empresa}! \n'
 
     def mostra_menu(self) -> None:
-        print('Nossos bots disponíveis no momento são:')
+        s= f'Nossos bots disponíveis no momento são: \n'
         for x in range(len(self.__lista_bots)):
-            print(f'{x}- Bot: {self.__lista_bots[x].nome}. Mensagem de apresentação: {self.__lista_bots[x].apresentacao()}.')
+            s += f'{x}- Bot: {self.__lista_bots[x].nome}. Mensagem de apresentação: {self.__lista_bots[x].apresentacao()}. \n'
+        s += 'Digite o número do bot com que você quer conversar! \n'
+        return s
     
-    def escolhe_bot(self):
-        indice_bot = int(input('Digite o número do bot com que você quer conversar: '))
-        self.__bot = self.__lista_bots[indice_bot]
+    def escolhe_bot(self, indice):
+        self.__bot = self.__lista_bots[int(indice)]
 
     def mostra_comandos_bot(self):
         self.__bot.mostra_comandos()
@@ -41,10 +46,19 @@ class SistemaChatBot:
         print(f'Eu te respondo: {comando.getRandomResposta()}')
 
     def inicio(self):
-        self.boas_vindas()
-        self.mostra_menu()
-        self.escolhe_bot()
-        self.__bot.boas_vindas()
+        janela = sg.Window(self.janela.title, self.janela.layout, font=self.janela.font, return_keyboard_events=True, finalize=True)
+        janela.Element('bot').Update(self.boas_vindas()+self.mostra_menu())
+        while True:
+            evento, valores= janela.read()
+            if evento== sg.WIN_CLOSED:
+                self.__over = True
+                break
+            elif  evento == 'Enviar':
+                self.escolhe_bot(valores['user'])
+                break
+
+        janela.Element('bot').Update(self.__bot.boas_vindas())
+
         while not self.__over:
             self.mostra_comandos_bot()
             self.le_envia_comando()

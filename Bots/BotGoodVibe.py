@@ -1,14 +1,8 @@
-from Bots.Bot import Bot
+from Bots.Bot import Bot, Comando
 
 class BotGoodVibe(Bot):
     def __init__(self, nome: str):
-        comandos = [ 
-            ('Olá!','Tô tranquilão, susse.'),
-            ('Me conte sobre você', f'Eu sou o {nome} adoro surfar e me conectar com a natureza.'),
-            ('Como você está?', 'Estou sempre bem, sempre na good vibe.'),
-            ('Você quer ser meu amigo?', 'Claroo broww, venha para o mundo good vibe.')
-        ]
-
+        comandos = [ Comando('1','Olá!',['Eae, brother!']) ]
         super().__init__(nome, comandos)
 
     def apresentacao(self) -> str:
@@ -19,3 +13,9 @@ class BotGoodVibe(Bot):
 
     def despedida(self) -> str:
         return 'Flw, fique com Jah!'
+'''
+('Olá!','Tô tranquilão, susse.'),
+('Me conte sobre você', f'Eu sou o {nome} adoro surfar e me conectar com a natureza.'),
+('Como você está?', 'Estou sempre bem, sempre na good vibe.'),
+('Você quer ser meu amigo?', 'Claroo broww, venha para o mundo good vibe.')
+'''
