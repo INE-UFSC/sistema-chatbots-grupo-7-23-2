@@ -30,20 +30,21 @@ class SistemaChatBot:
         self.__bot = self.__lista_bots[int(indice)]
 
     def mostra_comandos_bot(self):
-        self.__bot.mostra_comandos()
+        return self.__bot.mostra_comandos()
 
-    def le_envia_comando(self):
-        indice_comando = int(input('Digite o comando desejado (ou -1 para sair): '))
+    def le_envia_comando(self,indice): #fazer com que essa função agora receba um valor quando chamada, e não exija um input
+        f=''
         try :
-            comando = self.__bot.get_comando(indice_comando)
+            comando = self.__bot.get_comando(indice)
         except IndexError as e:
-            print('\n' + str(e) + '\n')
-        if indice_comando == -1:
+            return (f'{str(e)} \n')
+        if indice == '-1':
             self.__over=True
             return
 
-        print(f'Você disse: {comando.mensagem}')
-        print(f'Eu te respondo: {comando.getRandomResposta()}')
+        f+=f'Você disse: {comando.mensagem} \n'
+        f+=f'Eu te respondo: {comando.getRandomResposta()} \n'
+        return f
 
     def inicio(self):
         janela = sg.Window(self.janela.title, self.janela.layout, font=self.janela.font, return_keyboard_events=True, finalize=True)
@@ -57,10 +58,16 @@ class SistemaChatBot:
                 self.escolhe_bot(valores['user'])
                 break
 
-        janela.Element('bot').Update(self.__bot.boas_vindas())
+        janela.Element('bot').Update(self.__bot.boas_vindas()+self.mostra_comandos_bot())
 
         while not self.__over:
-            self.mostra_comandos_bot()
-            self.le_envia_comando()
+            evento, valores= janela.read()
+            if evento== sg.WIN_CLOSED:
+                self.__over = True
+                break
+            elif  evento == 'Enviar':
+                janela.Element('bot').Update(self.le_envia_comando(valores['user'])+self.mostra_comandos_bot())
+            #self.mostra_comandos_bot()
+            #self.le_envia_comando()
 
         print(self.__bot.despedida())

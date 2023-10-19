@@ -23,8 +23,10 @@ class Bot(ABC):
         self.__nome = nome
 
     def mostra_comandos(self) -> None:
+        f=''
         for comando in self.__comandos:
-            print(f'{comando.id} - {comando.mensagem}')
+            f+=f'{comando.id} - {comando.mensagem} \n'
+        return f
     
     def get_comando(self, id: int):
         for comando in self.__comandos:
@@ -37,7 +39,7 @@ class Bot(ABC):
         pass
 
     @abstractmethod
-    def boas_vindas(self) -> None:
+    def boas_vindas(self) -> str:
         pass
     
     @abstractmethod
