@@ -1,10 +1,11 @@
 import PySimpleGUI as sg
 
 layout = [
- [sg.Text('', size=(40, 1))],
- [sg.Text('',(88,21), key='bot')],
- [sg.InputText('Digite seu comando aqui (aperte ENTER para enviar)', key='user'), sg.Button('Enviar')]
- ]
+    [sg.Text('', size=(40, 1))],
+    [sg.Text('', (88, 21), key='bot')],
+    [sg.InputText(f'', key='user'), sg.Button('Enviar')]
+]
+
 
 class Interface:
     def __init__(self, title:str, layout: list, font: tuple):
