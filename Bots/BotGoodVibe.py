@@ -1,4 +1,5 @@
-from Bots.Bot import Bot, Comando
+from Bots.Bot import Bot
+
 
 class BotGoodVibe(Bot):
     def __init__(self, nome: str):

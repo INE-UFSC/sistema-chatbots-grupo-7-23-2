@@ -1,5 +1,5 @@
 from Bots.Bot import Bot
-from comando import Comando
+
 
 class BotSadBoy(Bot):
     def __init__(self, nome: str):
@@ -13,3 +13,4 @@ class BotSadBoy(Bot):
 
     def despedida(self) -> str:
         return 'Flw, espero que você não fique tão sad quanto eu. \n'
+

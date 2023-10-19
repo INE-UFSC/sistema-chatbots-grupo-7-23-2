@@ -3,6 +3,7 @@ import json
 
 from comando import Comando
 
+
 class Bot(ABC):
     def __init__(self, nome: str, tipo_bot: str):
         self.__nome = nome
@@ -17,7 +18,6 @@ class Bot(ABC):
 
             self.__comandos.append(Comando(i, mensagem, respostas))
 
-
     @property
     def nome(self) -> str:
         return self.__nome
@@ -31,10 +31,11 @@ class Bot(ABC):
         for comando in self.__comandos:
             f+=f'{comando.id} - {comando.mensagem} \n'
         return f
-    
+
     def get_comando(self, id: int):
         if not isinstance(id, int):
             id = int(id)
+
         for comando in self.__comandos:
             if comando.id == id:
                 return comando
@@ -48,7 +49,7 @@ class Bot(ABC):
     @abstractmethod
     def boas_vindas(self) -> str:
         pass
-    
+
     @abstractmethod
     def despedida(self) -> None:
         pass
