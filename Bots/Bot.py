@@ -16,7 +16,7 @@ class Bot(ABC):
             for k in range(len(respostas)):
                 respostas[k] = respostas[k].replace('{name}', self.__nome)
 
-            self.__comandos.append(Comando(i, mensagem, respostas))
+            self.__comandos.append(Comando(i + 1, mensagem, respostas))
 
     @property
     def nome(self) -> str:
