@@ -21,6 +21,7 @@ class Comando:
     def getRandomResposta(self):
         random_resp = random.choice(self.__respostas)
         return random_resp
+
     # adiciona resposta
     def addResposta(self, resposta):
         self.__respostas.append(resposta)

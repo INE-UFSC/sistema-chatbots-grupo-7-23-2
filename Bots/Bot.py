@@ -1,8 +1,16 @@
 from abc import ABC, abstractmethod
+import json
+
 from comando import Comando
 
 class Bot(ABC):
     def __init__(self, nome: str, comandos: list[Comando]):
+        with open('./assets/bot_data.json', 'r') as file:
+            a = json.load(file)
+            print(a)
+
+        # for 
+
         self.__nome = nome
         self.__comandos = comandos
 

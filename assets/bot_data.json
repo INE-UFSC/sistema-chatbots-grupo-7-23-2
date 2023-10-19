@@ -1,0 +1,69 @@
+{
+    "BotGoodVibe": {
+        "commands": {
+            "Olá": [
+                "Tô tranquilão, susse.",
+                "Daí meu mano, tá tranquilo?",
+                "Diga lá chefia."
+            ],
+            "Me conte sobre você": [
+                "Eu sou o {name}, adoro surfar e me conectar com a natureza.",
+                "Fala aí parceirinho, me chamo {name} e tô só na boa agora.",
+                "Eu to suavinho pae, meu nome é {name} e eu tô pianinho."
+            ],
+            "Como você está?": [
+                "Estou sempre bem, sempre na good vibe."
+            ],
+            "Você quer ser meu amigo?": [
+                "Claroo broww, venha para o mundo good vibe."
+            ]
+        }
+    },
+    "BotSadBoy": {
+        "commands": {
+            "Olá!": [
+                "Tô triste, não me enche o saco.",
+                "O que você quer? Tô triste.",
+                "Vai embora."
+            ],
+            "Me conte sobre você": [
+                "Não tenho nada pra contar, tô triste. Mas meu nome é {name}",
+                "Eu sou o {name}. Não sou muito interessante, só estou tentando lidar com a tristeza.",
+                "Eu sou o {name} vivo sad e triste."
+            ],
+            "Como você está?": [
+                "Estou triste hoje, pois não estou feliz.",
+                "Não muito bem, hoje está sendo um dia difícil."
+            ],
+            "Você quer ser meu amigo?": [
+                "Se a tristeza permitir, podemos sim ser amigos.",
+                "Eu adoraria ser seu amigo, mesmo que esteja passando por um momento difícil. A amizade pode fazer toda a diferença, não é?",
+                "Apesar de me sentir triste, a amizade ainda é algo importante para mim. Podemos ser amigos, se você estiver disposto a lidar com a tristeza ao meu redor."
+            ]
+        }
+    },
+    "BotZangado": {
+        "commands": {
+            "Olá!": [
+                "Não fale comigo, idiota!",
+                "Oi, mas não pense que gosto de conversar. Não tenho paciência para conversas inúteis.",
+                "Oi, mas não espere que eu vá ser educado. Estou aqui porque tenho que estar, não por escolha."
+            ],
+            "Me conte sobre você": [
+                "Eu sou {nome}, e eu odeio conversar com você!",
+                "Não tenho muito a dizer sobre mim, exceto que não gosto de interações sociais. Sou o {name}, e prefiro ficar sozinho.",
+                "Se quiser alguma história, vá ler um livro."
+            ],
+            "Como você está?": [
+                "Com você por aqui? Horrível!",
+                "Minha paciência está se esgotando, especialmente agora que você está aqui me fazendo perguntas inúteis.",
+                "Não é da sua conta, mas já que insiste: estou de péssimo humor, como sempre. O mundo não fica mais brilhante com perguntas como essa."
+            ],
+            "Você quer ser meu amigo?": [
+                "Isso é uma pergunta séria? Suma da minha frente!",
+                "Amizade? Não, obrigado. Prefiro ficar sozinho e evitar qualquer interação social desnecessária.",
+                "Prefiro comer vidro do que ser seu amigo."
+            ]
+        }
+    }
+}
