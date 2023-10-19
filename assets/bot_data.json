@@ -50,7 +50,7 @@
                 "Oi, mas não espere que eu vá ser educado. Estou aqui porque tenho que estar, não por escolha."
             ],
             "Me conte sobre você": [
-                "Eu sou {nome}, e eu odeio conversar com você!",
+                "Eu sou {name}, e eu odeio conversar com você!",
                 "Não tenho muito a dizer sobre mim, exceto que não gosto de interações sociais. Sou o {name}, e prefiro ficar sozinho.",
                 "Se quiser alguma história, vá ler um livro."
             ],

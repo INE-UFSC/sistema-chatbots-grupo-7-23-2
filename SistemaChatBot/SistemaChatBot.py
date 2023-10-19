@@ -16,10 +16,10 @@ class SistemaChatBot:
         self.__over = False
         self.janela = janela
     
-    def boas_vindas(self) -> None:
+    def boas_vindas(self) -> str:
         return f'Bem vindo ao Sistema de Chatbots da {self.__empresa}! \n'
 
-    def mostra_menu(self) -> None:
+    def mostra_menu(self) -> str:
         s= f'Nossos bots disponíveis no momento são: \n'
         for x in range(len(self.__lista_bots)):
             s += f'{x}- Bot: {self.__lista_bots[x].nome}. Mensagem de apresentação: {self.__lista_bots[x].apresentacao()}. \n'
@@ -32,21 +32,22 @@ class SistemaChatBot:
     def mostra_comandos_bot(self):
         return self.__bot.mostra_comandos()
 
-    def le_envia_comando(self,indice): #fazer com que essa função agora receba um valor quando chamada, e não exija um input
+    def le_envia_comando(self, indice: int) -> str: #fazer com que essa função agora receba um valor quando chamada, e não exija um input
+        if indice == '-1':
+            self.__over=True
+            return ''
+
         f=''
         try :
             comando = self.__bot.get_comando(indice)
         except IndexError as e:
             return (f'{str(e)} \n')
-        if indice == '-1':
-            self.__over=True
-            return
 
         f+=f'Você disse: {comando.mensagem} \n'
         f+=f'Eu te respondo: {comando.getRandomResposta()} \n'
         return f
 
-    def inicio(self):
+    def inicio(self) -> None:
         janela = sg.Window(self.janela.title, self.janela.layout, font=self.janela.font, return_keyboard_events=True, finalize=True)
         janela.Element('bot').Update(self.boas_vindas()+self.mostra_menu())
         while True:
@@ -65,9 +66,7 @@ class SistemaChatBot:
             if evento== sg.WIN_CLOSED:
                 self.__over = True
                 break
-            elif  evento == 'Enviar':
-                janela.Element('bot').Update(self.le_envia_comando(valores['user'])+self.mostra_comandos_bot())
-            #self.mostra_comandos_bot()
-            #self.le_envia_comando()
+            elif evento == 'Enviar':
+                janela.Element('bot').Update(self.le_envia_comando(valores['user']) + self.mostra_comandos_bot())
 
         print(self.__bot.despedida())
